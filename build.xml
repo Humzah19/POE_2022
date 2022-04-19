@@ -70,4 +70,14 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="junit" depends="compile">
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <path refid="junit.class.path" />
+                <fileset dir="${junit.dir}">
+                    <include name="**/junit.jar" />
+                </fileset>
+            </classpath>
+        </junit>
+    </target>
 </project>
