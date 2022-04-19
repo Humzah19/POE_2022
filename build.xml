@@ -70,15 +70,37 @@
     nbproject/build-impl.xml file. 
 
     -->
-     <target name="test" depends="compile"
-          description="run the tests">
-        <junit>
-          <classpath refid="junit.class.path"/>
-          <batchtest>
-            <fileset dir="${build}">
-              <include name="**/*Test.class"/>
-            </fileset>
-          </batchtest>
+        <!-- the ant job for compiling our test code -->
+    <target name="compile-test" depends="compile">
+        <mkdir dir="${bin.dir}/test-classes"/>
+        <javac srcdir="src/test/java" destdir="${bin.dir}/test-classes" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="test-jar" depends="compile-test">
+        <jar destfile="${bin.dir}/${ant.project.name}.jar" basedir="${bin.dir}/test-classes">
+            <manifest>
+                <attribute name="Main-Class" value="${junit.class.name}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="package" depends="test-jar">
+    </target>
+
+    <target name="all" depends="compile-test">
+        <mkdir dir="${report.data.dir}"/>
+        <mkdir dir="${report.dir}"/>
+        <junit fork="no" haltonfailure="no" showoutput="yes" printsummary="true">
+            <test name="${junit.class.name}" todir="${report.data.dir}"/>
+            <formatter type="brief" usefile="false"/>
+            <formatter type="xml"/>
+            <classpath refid="classpath" />
         </junit>
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.data.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${report.dir}"/>
+        </junitreport>
     </target>
 </project>
