@@ -73,7 +73,7 @@
         <!-- the ant job for compiling our test code -->
     <target name="compile-test" depends="compile">
         <mkdir dir="${bin.dir}/test-classes"/>
-        <javac srcdir="src/test/java" destdir="${bin.dir}/test-classes" classpathref="classpath" includeantruntime="false"/>
+        <javac srcdir="test/Authentication" destdir="${bin.dir}/test-classes" classpathref="classpath" includeantruntime="false"/>
     </target>
 
     <target name="test-jar" depends="compile-test">
