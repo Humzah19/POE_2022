@@ -73,7 +73,7 @@
      <target name="test" depends="compile"
           description="run the tests">
         <junit>
-          <classpath refid="lib.path"/>
+          <classpath refid="junit.class.path"/>
           <batchtest>
             <fileset dir="${build}">
               <include name="**/*Test.class"/>
