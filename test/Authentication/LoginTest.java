@@ -45,7 +45,7 @@ public class LoginTest {
         System.out.println("registerUser");
         User user = new User("Kyle", "One", new Credentials("kyl_1", "Test1234@"));
         Login instance = new Login();
-        String expResult = utils.utils.WELCOME_MESSAGE;
+        String expResult = "Welcome Kyle, One it is great to see you again.";
         String result = instance.registerUser(user);
         assertEquals(expResult, result);
     }
@@ -85,7 +85,8 @@ public class LoginTest {
         String username = "kyl_1";
         String password = "Test1234@";
         Login instance = new Login();
-        boolean result = instance.loginUser(user, username, password);
+        instance.registeredUser = user;
+        boolean result = instance.loginUser(username, password);
         assertTrue(result);
     }    
      
@@ -99,7 +100,8 @@ public class LoginTest {
         String username = "kyl_1";
         String password = "Test1234@1";
         Login instance = new Login();
-        boolean result = instance.loginUser(user, username, password);
+        instance.registeredUser = user;
+        boolean result = instance.loginUser(username, password);
         assertFalse(result);
     }
 

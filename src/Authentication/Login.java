@@ -27,10 +27,10 @@ public class Login {
 
     }
     
-    public boolean loginUser(User user, String username, String password){
+    public boolean loginUser(String username, String password){
         
-        if(user.credentials.username.equalsIgnoreCase(username) && 
-                user.credentials.password.equals(password))
+        if(registeredUser.credentials.username.equalsIgnoreCase(username) && 
+                registeredUser.credentials.password.equals(password))
             return true;
         
         return false;
@@ -97,8 +97,9 @@ public class Login {
     }
     
     public String returnLoginStatus(boolean successfullyLoggedIn){
-        if(successfullyLoggedIn)
-            return utils.WELCOME_MESSAGE;
+        if(successfullyLoggedIn){
+            return utils.WELCOME_MESSAGE.replaceFirst("<user first name>", registeredUser.firstName).replaceFirst("<user last name>", registeredUser.lastName);
+        }
         else
             return utils.LOGIN_FAILURE_MESSAGE;
     }
