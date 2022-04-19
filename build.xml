@@ -72,7 +72,7 @@
     -->
         <!-- the ant job for compiling our test code -->
     <property name="test.build.dir" value="build/test"/>
-    <property name="test.src.dir" value="src/test/Authentication"/>
+    <property name="test.src.dir" value="test/Authentication"/>
     
     <path id="classpath.test">
         <pathelement location="lib/junit-4.12.jar"/>
