@@ -91,9 +91,15 @@ public class POE_2022 {
     private static void login(Scanner sc) {
         System.out.println("Enter your username");
         String username = sc.next();
+        
         System.out.println("Enter your password");
         String password = sc.next();
         System.out.println(auth.returnLoginStatus(auth.loginUser(username, password)));
+
+        while(!auth.loginUser(username, password)){
+            password = sc.next();
+            System.out.println(auth.returnLoginStatus(auth.loginUser(username, password)));
+        }
     }
     
     

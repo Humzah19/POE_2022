@@ -11,7 +11,7 @@ package utils;
  */
 public class utils {
     public static String WELCOME_MESSAGE = "Welcome <user first name>, <user last name> it is great to see you again.";
-    public static String LOGIN_FAILURE_MESSAGE = "“Username or password incorrect, please try again";
+    public static String LOGIN_FAILURE_MESSAGE = "Username or password incorrect, please try again";
     public static String SUCCESSFULLY_REGISTERED = "Successfully Registered";
     public static String VALIDATED_USERNAME = "Username successfully captured";
     public static String VALIDATED_PASSWORD = "Password successfully captured";
